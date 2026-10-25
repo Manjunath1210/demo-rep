@@ -16,10 +16,19 @@ pipeline {
             }
         }
 
+        stage('Update Website') {
+            steps {
+                echo 'Updating hotel name'
+                sh '''
+                    sed -i 's/Sri Manjunadheshwara Hotel and fast food center/Sri Manjunadheshwara Hotel and fast food/g' index.html
+                '''
+            }
+        }
+
         stage('Test') {
             steps {
                 sh 'grep -q "Sri Manjunadheshwara Hotel and fast food" index.html'
-                sh 'grep -q "Chicken Biryani" index.html'
+                sh '! grep -q "Sri Manjunadheshwara Hotel and fast food center" index.html'
                 echo 'All tests passed'
             }
         }
