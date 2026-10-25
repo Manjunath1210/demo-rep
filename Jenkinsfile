@@ -18,7 +18,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'grep -q "Sri Manjunadheshwara Hotel" index.html'
+                sh 'grep -q "Sri Manjunadheshwara Hotel and fast food center" index.html'
                 sh 'grep -q "Chicken Biryani" index.html'
                 echo 'All tests passed'
             }
